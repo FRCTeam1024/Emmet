@@ -2,9 +2,6 @@ package org.usfirst.frc1024.Emmet.commands;
 
 import org.usfirst.frc1024.Emmet.Robot;
 import org.usfirst.frc1024.Emmet.subsystems.Drivetrain;
-import org.usfirst.frc1024.Emmet.subsystems.Wings;
-
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

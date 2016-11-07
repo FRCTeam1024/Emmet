@@ -13,6 +13,7 @@ package org.usfirst.frc1024.Emmet.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc1024.Emmet.Robot;
+import org.usfirst.frc1024.Emmet.subsystems.Lifter;
 
 /**
  *
@@ -34,7 +35,7 @@ public class  Lower extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.lifter.LiftMotors(Robot.xBoxButton);
+    	Lifter.LiftMotors(Robot.xBoxButton);
     }
 
     // Make this return true when this Command no longer needs to run execute()

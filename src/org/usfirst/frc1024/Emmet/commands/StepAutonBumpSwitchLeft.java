@@ -7,7 +7,6 @@ import org.usfirst.frc1024.Emmet.subsystems.Wings;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Timer.Interface;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.communication.FRCNetworkCommunicationsLibrary;
 
 /**
  *

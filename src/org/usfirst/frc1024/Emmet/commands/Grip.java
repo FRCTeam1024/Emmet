@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc1024.Emmet.Robot;
+import org.usfirst.frc1024.Emmet.subsystems.Gripper;
 
 /**
  *
@@ -36,8 +37,8 @@ public class  Grip extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.gripper.rightArm.set(DoubleSolenoid.Value.kForward);
-    	Robot.gripper.leftArm.set(DoubleSolenoid.Value.kForward);
+    	Gripper.rightArm.set(DoubleSolenoid.Value.kForward);
+    	Gripper.leftArm.set(DoubleSolenoid.Value.kForward);
     }
 
     // Make this return true when this Command no longer needs to run execute()

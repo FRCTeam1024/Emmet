@@ -27,8 +27,7 @@ public class driveStraight extends Command{
     	
     		
     	
-    	int distance = 144;
-		RobotMap.drivetrainGyro.initGyro();
+    	RobotMap.drivetrainGyro.initGyro();
     	RobotMap.drivetrainGyro.reset();
 		RobotMap.drivetrainLeftEncoder.reset();
 		RobotMap.drivetrainLeftFront.enableBrakeMode(true);
