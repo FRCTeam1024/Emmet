@@ -1,5 +1,4 @@
 package org.usfirst.frc1024.Emmet;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -12,15 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc1024.Emmet.commands.*;
 import org.usfirst.frc1024.Emmet.subsystems.*;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
 public class Robot extends IterativeRobot {
-	String direction = "up";
 	boolean isdone = false;
 
 	Command autonomousCommand;
@@ -55,10 +46,6 @@ public class Robot extends IterativeRobot {
 	public static double encoderConstantInches = 250 / (13.2);
 	public static double encoderConstantFeet = 250 / ((13.2) / 12);
 
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
 	public void robotInit() {
 		RobotMap.init();
 		// server = CameraServer.getInstance();
@@ -111,11 +98,6 @@ public class Robot extends IterativeRobot {
 
 		autoChooser.addObject("Drive Straight", new driveStraight());
 	}
-
-	/**
-	 * This function is called when the disabled button is hit. You can use it
-	 * to reset subsystems before shutting down.
-	 */
 	public void disabledInit() {
 
 	}
@@ -130,80 +112,11 @@ public class Robot extends IterativeRobot {
 		autonomousCommand.start();*/
 	}
 
-	/**
-	 * This function is called periodically during autonomous
-	 */
-	
-	
-	
-	
-	void faceDirection(String target) {
-		if (target.equals(direction))
-			return;
-		switch (target) {
-		case "up":
-			if (direction.equals("left"))
-				Drivetrain.turnRight(.3, 65);
-			else if (direction.equals("right"))
-				Drivetrain.turnLeft(.3, 65);
-			else if (direction.equals("down")) {
-				Drivetrain.turnLeft(.3, 65);
-				Drivetrain.turnLeft(.3, 65);
-			}
-			break;
-		case "down":
-			if (direction.equals("left"))
-				Drivetrain.turnLeft(.3, 65);
-			else if (direction.equals("right"))
-				Drivetrain.turnRight(.3, 65);
-			else if (direction.equals("up")) {
-				Drivetrain.turnLeft(.3, 65);
-				Drivetrain.turnLeft(.3, 65);
-			}
-			break;
-		case "left":
-			if (direction.equals("up"))
-				Drivetrain.turnLeft(.3, 65);
-			else if (direction.equals("down"))
-				Drivetrain.turnRight(.3, 65);
-			else if (direction.equals("right")) {
-				Drivetrain.turnLeft(.3, 65);
-				Drivetrain.turnLeft(.3, 65);
-			}
-			break;
-		case "right":
-			if (direction.equals("down"))
-				Drivetrain.turnLeft(.3, 65);
-			else if (direction.equals("up"))
-				Drivetrain.turnRight(.3, 65);
-			else if (direction.equals("left")) {
-				Drivetrain.turnLeft(.3, 65);
-				Drivetrain.turnLeft(.3, 65);
-			}
-			break;
-
-		}
-		direction = target;
-	}
-
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		Path path = new Path(0, 0, 0, 0);
 		if (!isdone) {
-			path.add(0);
-			path.add(1);
-			path.add(2);
-			path.add(3);
-			String targetDirection;
-			targetDirection = path.getDirection();
-			while (!path.finished) {
-				faceDirection(targetDirection);
-				Drivetrain.DriveForward(.3, 2);
-				targetDirection = path.getDirection();
-			}
 		}
 		isdone = true;
-
 	}
 
 	public void teleopInit() {
@@ -228,8 +141,8 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		LiveWindow.run();
 		if(Robot.oi.logi.getRawButton(2) == true){
-			Lifter.lift1.set(-1);
-			Lifter.lift2.set(-1);
+			Lifter.lift1.set(-1.0);
+			Lifter.lift2.set(-1.0);
 			Timer.delay(0.300);
 			Lifter.Stop();
 		}
@@ -313,9 +226,6 @@ public class Robot extends IterativeRobot {
 
 	}
 
-	/**
-	 * This function is called periodically during test mode
-	 */
 	public void testPeriodic() {
 		LiveWindow.run();
 		// quarter speed
